@@ -52,10 +52,10 @@ const deleteNote = (id) =>
     },
   });
 
-const renderActiveNote = (newNote) => {
+const renderActiveNote = (newNote, activeNote) => {
   hide(saveNoteBtn);
 
-  if (newNote) {
+  if (newNote || activeNote) {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
     noteTitle.value = newNote.title;
@@ -80,28 +80,28 @@ const handleNoteSave = () => {
 };
 
 // Delete the clicked note
-const handleNoteDelete = (e) => {
-  // Prevents the click listener for the list from being called when the button inside of it is clicked
-  e.stopPropagation();
+// const handleNoteDelete = (e) => {
+//   // Prevents the click listener for the list from being called when the button inside of it is clicked
+//   e.stopPropagation();
 
-  const note = e.target;
-  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+//   const note = e.target;
+//   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
 
-  if (activeNote.id === noteId) {
-    activeNote = {};
-  }
+//   if (activeNote.id === noteId) {
+//     activeNote = {};
+//   }
 
-  deleteNote(noteId).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
-};
+//   deleteNote(noteId).then(() => {
+//     getAndRenderNotes();
+//     renderActiveNote();
+//   });
+// };
 
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
-  renderActiveNote();
+  renderActiveNote(activeNote);
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
@@ -150,7 +150,7 @@ const renderNoteList = async (notes) => {
         'text-danger',
         'delete-note'
       );
-      delBtnEl.addEventListener('click', handleNoteDelete);
+      // delBtnEl.addEventListener('click', handleNoteDelete);
 
       liEl.append(delBtnEl);
     }
