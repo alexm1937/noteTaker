@@ -16,8 +16,10 @@ app.use(express.json());
 //make public static 
 app.use(express.static('public'));
 //router exports (routes) from above consts
-app.use('/', htmlRoutes);
+
 app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
+
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
