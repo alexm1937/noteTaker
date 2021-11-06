@@ -5,6 +5,9 @@
   Easily create and keep track of important things remotely with noteTaker!
 
   See the live demo here: https://agile-mountain-70298.herokuapp.com/notes
+    
+  ![Screenshot (31)](https://user-images.githubusercontent.com/88976571/140594377-77922340-d9ae-4ac5-b9d5-76815d007d39.png)
+
 
   ## Table of contents
   * [Description](#description)
@@ -40,5 +43,3 @@
 
   ## Questions
   You can find my github at: https://github.com/alexm1937 </br>
-  
-  
